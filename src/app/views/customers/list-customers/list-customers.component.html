@@ -1,0 +1,53 @@
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">Customer List</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Company Name</th>
+        <th>Creation Date</th>
+        <th>Operations</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.id}}</td>
+          <td>{{ customer.firstName }}</td>
+          <td>{{ customer.lastName }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.phone }}</td>
+          <td>{{ customer.companyName }}</td>
+          <td>{{ customer.dateCreation }}</td>
+          <td style="text-align: center; align-items: center;">
+            <button type="button" class="btn btn-info btn-sm" (click)="deleteCustomer(customer)"><i class="fa fa-eye"></i></button>&nbsp;
+              <button type="button" class="btn btn-success btn-sm" [routerLink]="['/dashboard/newcustomer',customer.uid]"><i class="fa fa-pencil"></i></button> &nbsp;
+              <button type="button" class="btn btn-danger btn-sm" (click)="deleteCustomer(customer)"><i class="fa fa-trash"></i></button>
+          </td>
+          <!-- <td>Firefox 1.0</td> -->
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Company Name</th>
+        <th>Creation Date</th>
+        <th>Operations</th>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- /.box-body -->
+</div>
+<!-- /.box -->

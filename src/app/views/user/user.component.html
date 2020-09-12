@@ -1,0 +1,102 @@
+<div class="box">
+    <div class="box-header">
+      <div class="row">
+        <div class="col-md-6"><h3 class="box-title">List Of My Tasks</h3></div>
+        <div class="col-md-6">
+          <a
+            [routerLink]="['/dashboard/newtask']"
+            class="btn btn-primary pull-right"
+          >
+            <i class="fa fa-plus"></i> &nbsp; Add New Task
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-hover table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User</th>
+            <th>Owner</th>
+            <th>Start date</th>
+            <th>end date</th>
+            <th>Creation time</th>
+            <th>Priority</th>
+            <!-- <th>Is Passive</th> -->
+            <th>Task Progress</th>
+            <th>Status</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let task of tasks" >
+            <!-- <ng-container *ngIf="task.user.uid==uid"> -->
+                <td>{{ task.id }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.user.username }}</td>
+            <td>{{ task.owner }}</td>       
+            <td>{{ task.startDate }}</td>
+            <td>{{ task.endDate }}</td>
+            <td>{{ task.timeCreation }}</td>
+            <td>           
+              <span [ngClass]="getTaskPriority(task.priority)">
+                {{ task.priority }}
+              </span>
+            </td>
+            <!-- <td>{{ task.isActivePasive }}</td> -->
+            <td style="text-align: center;">
+              <span [ngClass]="getTaskPrograssBadge(task.progress)">
+                {{ task.progress }}
+              </span>
+              
+              <div class="progress progress-xs">
+                <div [ngClass]="getTaskPrograss(task.progress)"  [style.width.%]="task.progress"></div>
+              </div>
+            </td>
+            <td>
+              
+                <span [ngClass]="getcurrentLabelTask(task.statusCategory.name)">{{
+                  task.statusCategory.name
+                }}</span>
+              
+            </td>
+            <td style="text-align: center; align-items: center;">
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                [routerLink]="['/dashboard/newtask', task.uid]"
+              >
+                <i class="fa fa-pencil"></i>
+              </button>
+              &nbsp;
+              
+            </td>
+            <!-- </ng-container> -->
+            <!-- <td>Firefox 1.0</td> -->
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>User</th>
+            <th>Owner</th>
+            <th>Start date</th>
+            <th>end date</th>
+            <th>Creation time</th>
+            <th>Priority</th>
+            <!-- <th>Is Passive</th> -->
+            <th>Task Progress</th>
+            <th>Status</th>
+            <th>Operation</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+  

@@ -1,0 +1,240 @@
+<!-- <section class="content"> -->
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <div class="row">
+      <div class="col-md-6"><h3 class="box-title">Add New Project</h3></div>
+      <!-- <div class="col-md-6">
+        <button type="submit" class="btn btn-primary pull-right">
+          <i class="fa fa-plus"></i> &nbsp; Add New Project
+        </button>
+      </div> -->
+    </div>
+  </div>
+  <!-- /.box-header -->
+  <!-- form start -->
+  <div class="box-body">
+    <form #form="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="project name"
+          required
+          [(ngModel)]="project.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          placeholder="project description"
+          required
+          [(ngModel)]="project.description"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="dateCreation">Creation date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dateCreation"
+          placeholder="creation date of client project"
+          required
+          [(ngModel)]="project.dateCreation"
+          name="dateCreation"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="dateEnd">Due date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dateEnd"
+          name="dateEnd"
+          placeholder="estimation date of the project"
+          required
+          [(ngModel)]="project.dateEnd"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          min="0"
+          placeholder="price for the project"
+          required
+          [(ngModel)]="project.price"
+        />
+      </div>
+
+      <label>Status</label>
+      <div class="row">
+        <div class="form-group col-md-10">
+          <label for="status" class="sr-only">Status</label>
+          <select
+            class="form-control select2"
+            [(ngModel)]="project.status.id"
+            id="status"
+            name="status"
+            style="width: 100%;"
+          >
+            <option
+              *ngFor="let projectStatus of projectStatuses"
+              [value]="projectStatus.id"
+              >{{ projectStatus.name }}</option
+            >
+          </select>
+        </div>
+
+        <div class="form-group col-md-2">
+          <a
+            href="#"
+            class="btn btn-success my-2 my-sm-0"
+            data-toggle="modal"
+            data-target="#basicModal"
+            ><i class="fa fa-plus"></i
+          ></a>
+        </div>
+      </div>
+
+      <label>Client</label>
+      <div class="row">
+        <div class="form-group col-md-10">
+          <label for="client" class="sr-only">Client</label>
+          <select
+            class="form-control select2"
+            [(ngModel)]="project.client.id"
+            name="client"
+            id="client"
+            style="width: 100%;"
+          >
+            <option *ngFor="let customer of customers" [value]="customer.id"
+              >{{ customer.firstName | uppercase }} &nbsp;
+              {{ customer.lastName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-2">
+          <a
+            routerLink="/dashboard/newcustomer"
+            class="btn btn-success my-2 my-sm-0"
+            ><i class="fa fa-arrow-right"></i
+          ></a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- /.box-body -->
+
+  <div class="box-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!form.valid"
+      (click)="onSubmit()"
+      *ngIf="!project.id; else upadatdata"
+    >
+      Save
+    </button>
+    &nbsp;
+
+    <ng-template #upadatdata>
+      <button
+        type="submit"
+        class="btn btn-success"
+        (click)="editeProject()"
+        [disabled]="!form.valid"
+      >
+        Edite <i class="fa fa-pencil"></i>
+      </button>
+      &nbsp;
+    </ng-template>
+
+    <button type="button" routerLink="/dashboard" class="btn btn-danger">
+      Cancel
+    </button>
+  </div>
+</div>
+<!-- </section> -->
+
+<div
+  class="modal fade"
+  id="basicModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="basicModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true"
+        >
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="name"
+                required
+                [(ngModel)]="projectStatus.name"
+                name="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                placeholder="description"
+                required
+                [(ngModel)]="projectStatus.description"
+                name="description"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="createProjectStatus()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

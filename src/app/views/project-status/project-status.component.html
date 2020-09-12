@@ -1,0 +1,92 @@
+<!-- <section class="content"> -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add New Status</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form #form="ngForm"> 
+          <div class="box-body">
+            
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="name"
+                required
+                [(ngModel)]="projectStatus.name"
+                name="name"
+              />
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  placeholder="description"
+                  required
+                  [(ngModel)]="projectStatus.description"
+                  name="description"
+                />
+              </div>
+
+          </div>
+          <!-- /.box-body -->
+    
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="onSubmit()" *ngIf="!projectStatus.id else upadatdata">Save</button> &nbsp;
+  
+            <ng-template #upadatdata>
+              <button type="submit" class="btn btn-success" (click)="editeProjectStatus()" [disabled]="!form.valid">Edite <i class="fa fa-pencil"></i></button> &nbsp;
+            </ng-template>
+  
+            <button  type="button" routerLink="/dashboard" class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
+    <!-- </section> -->
+    
+    <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Status List</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let projectStatus of projectStatuses">
+                <td>{{ projectStatus.id}}</td>
+                <td>{{ projectStatus.name }}</td>
+                <td>{{ projectStatus.description }}</td>
+                <td style="text-align: center; align-items: center;">
+                    <button type="button" class="btn btn-success" [routerLink]="['/dashboard/projectstatus',projectStatus.uid]"><i class="fa fa-pencil"></i></button> &nbsp;
+                    <button type="button" class="btn btn-danger" (click)="deleteCustomer(projectStatus)" ><i class="fa fa-trash"></i></button>
+                </td>
+                <!-- <td>Firefox 1.0</td> -->
+              </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Operation</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->

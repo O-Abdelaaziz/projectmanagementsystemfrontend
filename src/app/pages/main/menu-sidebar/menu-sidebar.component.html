@@ -1,0 +1,116 @@
+ <!-- Left side column. contains the logo and sidebar -->
+ <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img [src]="imageUserProfile" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{username}}</p>
+          <!-- Status -->
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+
+      <!-- search form (Optional) -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+
+       <!-- Sidebar Menu -->
+    <ul class="sidebar-menu" data-widget="tree">
+
+      <li class="header">MAIN NAVIGATION</li>
+      <!-- Optionally, you can add icons to the links -->
+      <li class="active">
+        <a  routerLink="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+      </li>
+
+      <li class="treeview">
+        <a><i class="fa fa-user"></i> <span>Users</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['users']"><i class="fa fa-list"></i> List Of Users</a></li>
+          <li><a [routerLink]="['usertask']"><i class="fa fa-tasks"></i> My Tasks</a></li>
+        </ul>
+      </li>
+
+      
+      <li class="treeview">
+        <a><i class="fa fa-users"></i> <span>Customers</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a  [routerLink]="['newcustomer']"> <i class="fa fa-plus"></i> Add New Customer</a></li>
+          <li><a  [routerLink]="['customers']"><i class="fa fa-list"></i> List Of Customers</a></li>
+        </ul>
+      </li>
+
+
+      <li class="treeview">
+        <a><i class="fa fa-suitcase"></i> <span>Project</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['newproject']"> <i class="fa fa-plus"></i> Add New Project</a></li>
+          <li><a [routerLink]="['projects']"><i class="fa fa-list"></i> List Of Projects</a></li>
+          <li><a [routerLink]="['projectissues']"><i class="fa fa-exclamation-triangle" ></i> Project Issues</a></li>
+          <li><a [routerLink]="['projectstatus']"><i class="fa fa-eye" ></i> Project Status</a></li>
+        </ul>
+      </li>
+
+
+      <li class="treeview">
+        <a><i class="fa fa-tasks"></i> <span>Task</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            <app-badge-label></app-badge-label>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['newtask']"> <i class="fa fa-plus"></i> Add New Task</a></li>
+          <li><a [routerLink]="['tasks']"><i class="fa fa-list"></i> List Of Tasks</a></li>
+          <li><a [routerLink]="['categories']"><i class="fa fa-eye" ></i> Task Status</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#"><i class="fa fa-bell"></i> <span>Notice</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            <app-messages-menu></app-messages-menu>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['notices']"> <i class="fa fa-plus"></i> Add New Notice</a></li>
+          <!-- <li><a href="#"><i class="fa fa-list"></i> List Of Notices</a></li> -->
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="#"><i class="fa fa-info-circle"></i> <span>About</span></a>
+      </li>
+    </ul>
+    <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
